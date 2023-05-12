@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CalendarApp" parent="Theme.MaterialComponents.Bridge">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+    <style name="Theme.PrimaryColorButton" parent="Base.Theme.CalendarApp">
+
+        <item name="android:textColor">@color/white</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+
+    </style>
+
+</resources>

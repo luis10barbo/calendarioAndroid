@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Calendario</string>
+    <string name="open_event">Abrir Evento</string>
+    <string name="clear_event">Limpar Evento</string>
+    <string name="create_event_here">Criar um Evento</string>
+    <string name="event_description">Descricao do evento</string>
+    <string name="event_name">Nome do evento</string>
+    <string name="horas">Horas</string>
+    <string name="minutes">Minutos</string>
+    <string name="define_event_time">Definir horario do evento</string>
+    <string name="save">Salvar</string>
+    <string name="reset">Resetar</string>
+    <string name="create_event">Criar um novo evento</string>
+</resources>
