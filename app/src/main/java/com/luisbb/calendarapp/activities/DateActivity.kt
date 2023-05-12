@@ -30,17 +30,8 @@ class DateActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_date)
 
-
-        if (intent == null) return;
-        val epochSecond = intent.getLongExtra("date", 0)
-
-        date = epochSecondToLocalDate(epochSecond)
-
-        val factory = DateActivityViewModelFactory(application, this, date)
-        dateActivityViewModel = ViewModelProvider(
-            this,
-            factory
-        )[DateActivityViewModel::class.java]
+        getIntentExtras()
+        setupActivityViewModel()
 
         setupButtons()
         setupTextViews()
@@ -50,7 +41,23 @@ class DateActivity: AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         getDateEvents()
+    }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getIntentExtras() {
+        if (intent == null) return;
+        val epochSecond = intent.getLongExtra("date", 0)
+
+        date = epochSecondToLocalDate(epochSecond)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setupActivityViewModel() {
+        val factory = DateActivityViewModelFactory(application, this, date)
+        dateActivityViewModel = ViewModelProvider(
+            this,
+            factory
+        )[DateActivityViewModel::class.java]
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

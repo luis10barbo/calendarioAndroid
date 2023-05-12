@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeMonthEvents() {
         activityViewModel.monthEvents.observe(this) { dateEvents ->
-            Log.d("teste", "EVENTOS AQUI")
             if (dateEvents != null) {
                 setupCalendarView()
                 setupEventView(dateEvents)
@@ -76,6 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         monthSpinner.adapter = monthsAdapter
         yearSpinner.adapter = yearAdapter
+
         monthSpinner.setSelection(activityViewModel.currentDate.monthValue - 1)
         yearSpinner.setSelection(activityViewModel.currentDate.year - 2000)
 
@@ -120,7 +120,12 @@ class MainActivity : AppCompatActivity() {
                 calendarDayClick(
                     calendarDay
                 )
-            }, dateEvents, getColorStateList(R.color.white), getColorStateList(R.color.dayWithEvent), getColorStateList(R.color.black), getColorStateList(R.color.currentDayWithEvent))
+            }, dateEvents,
+                getColorStateList(R.color.white),
+                getColorStateList(R.color.dayWithEvent),
+                getColorStateList(R.color.black),
+                getColorStateList(R.color.currentDayWithEvent)
+            )
         }
     }
 

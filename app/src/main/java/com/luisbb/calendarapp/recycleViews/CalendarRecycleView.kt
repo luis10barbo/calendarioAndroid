@@ -11,7 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.calendarapp.dataClasses.CalendarDay
 import com.example.calendarapp.dataClasses.db.DateEvent
-import com.example.calendarapp.utils.getDays
+import com.example.calendarapp.utils.getCalendarDays
 import java.time.LocalDate
 import java.time.ZonedDateTime
 
@@ -25,7 +25,7 @@ class CalendarRecycleViewAdapter(
     private val eventCurrentDateColorState: ColorStateList
 ): RecyclerView.Adapter<CalendarRecycleViewHolder>() {
     @RequiresApi(Build.VERSION_CODES.O)
-    private val calendarDays = getDays(currentDate)
+    private val calendarDays = getCalendarDays(currentDate)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarRecycleViewHolder {

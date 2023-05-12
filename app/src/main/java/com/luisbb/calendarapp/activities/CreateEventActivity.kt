@@ -47,17 +47,22 @@ class CreateEventActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
 
-        if (intent == null) return
-        val epochSecond = intent.getLongExtra("date", 0)
-
-        startDateTime = epochSecondToLocalDate(epochSecond)
-        dateTime = startDateTime
+        getIntentExtras()
 
         setupEditText()
         setupViewModel()
         setupSpinners()
         setupButtons()
         setupSwitches()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getIntentExtras() {
+        if (intent == null) return
+        val epochSecond = intent.getLongExtra("date", 0)
+
+        startDateTime = epochSecondToLocalDate(epochSecond)
+        dateTime = startDateTime
     }
 
     private fun setupEditText() {
