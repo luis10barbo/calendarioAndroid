@@ -1,4 +1,4 @@
-package com.example.calendarapp.viewModels.activities.dateActivity
+package com.luisbb.calendarapp.viewModels.activities.dateActivity
 
 import android.app.Application
 import android.os.Build

@@ -1,8 +1,8 @@
-package com.example.calendarapp.utils
+package com.luisbb.calendarapp.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.calendarapp.dataClasses.CalendarDay
+import com.luisbb.calendarapp.dataClasses.CalendarDay
 import java.time.Instant
 import java.time.LocalDate
 import java.time.Month

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.calendarapp'
+    namespace 'com.luisbb.calendarapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.calendarapp"
+        applicationId "com.luisbb.calendarapp"
         minSdk 24
         targetSdk 33
         versionCode 1

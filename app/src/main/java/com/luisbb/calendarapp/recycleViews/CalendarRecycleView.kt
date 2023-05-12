@@ -1,4 +1,4 @@
-package com.example.calendarapp
+package com.luisbb.calendarapp.recycleViews
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -9,9 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calendarapp.dataClasses.CalendarDay
-import com.example.calendarapp.dataClasses.db.DateEvent
-import com.example.calendarapp.utils.getCalendarDays
+import com.luisbb.calendarapp.R
+import com.luisbb.calendarapp.dataClasses.CalendarDay
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.utils.getCalendarDays
 import java.time.LocalDate
 import java.time.ZonedDateTime
 

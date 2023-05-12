@@ -1,4 +1,4 @@
-package com.example.calendarapp.viewModels.dateEvent
+package com.luisbb.calendarapp.viewModels.dateEvent
 
 import android.os.Build
 import android.util.Log
@@ -6,8 +6,8 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.calendarapp.dataClasses.db.DateEvent
-import com.example.calendarapp.database.dao.DateEventDao
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.database.dao.DateEventDao
 import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
 

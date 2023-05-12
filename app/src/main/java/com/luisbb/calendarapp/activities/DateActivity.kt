@@ -10,15 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calendarapp.R
-import com.example.calendarapp.activities.CreateEventActivity
-import com.example.calendarapp.dataClasses.db.DateEvent
-import com.example.calendarapp.recycleViews.EventsRecycleViewAdapter
-import com.example.calendarapp.utils.epochSecondToLocalDate
-import com.example.calendarapp.utils.getMonthsArray
-import com.example.calendarapp.utils.localDateToEpochSecond
-import com.example.calendarapp.viewModels.activities.dateActivity.DateActivityViewModel
-import com.example.calendarapp.viewModels.activities.dateActivity.DateActivityViewModelFactory
+import com.luisbb.calendarapp.R
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.recycleViews.EventsRecycleViewAdapter
+import com.luisbb.calendarapp.utils.epochSecondToLocalDate
+import com.luisbb.calendarapp.utils.getMonthsArray
+import com.luisbb.calendarapp.utils.localDateToEpochSecond
+import com.luisbb.calendarapp.viewModels.activities.dateActivity.DateActivityViewModel
+import com.luisbb.calendarapp.viewModels.activities.dateActivity.DateActivityViewModelFactory
 import java.time.ZonedDateTime
 
 class DateActivity: AppCompatActivity() {

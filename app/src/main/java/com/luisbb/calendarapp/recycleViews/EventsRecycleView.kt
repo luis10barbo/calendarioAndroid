@@ -1,12 +1,12 @@
-package com.example.calendarapp.recycleViews
+package com.luisbb.calendarapp.recycleViews
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calendarapp.R
-import com.example.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.R
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
 
 class EventsRecycleViewAdapter(private val dateEvents: List<DateEvent>, private val onClearClick: (dateEvent:DateEvent) -> Unit): RecyclerView.Adapter<EventsRecycleViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsRecycleViewHolder {

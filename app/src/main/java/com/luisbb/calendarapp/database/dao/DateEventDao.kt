@@ -1,4 +1,4 @@
-package com.example.calendarapp.database.dao
+package com.luisbb.calendarapp.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
 import java.time.LocalDate
 
 @Dao

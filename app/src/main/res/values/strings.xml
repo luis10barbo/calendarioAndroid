@@ -11,4 +11,5 @@
     <string name="save">Salvar</string>
     <string name="reset">Resetar</string>
     <string name="create_event">Criar um novo evento</string>
+    <string name="edit_event">Editar evento</string>
 </resources>

@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.database.dao.DateEventDao
 
 @Database(entities=[DateEvent::class], version = 1, exportSchema = false)
 abstract class DateEventDatabase: RoomDatabase() {

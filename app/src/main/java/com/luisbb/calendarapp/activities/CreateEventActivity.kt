@@ -1,31 +1,29 @@
-package com.example.calendarapp.activities
+package com.luisbb.calendarapp.activities
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Spinner
-import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.calendarapp.R
-import com.example.calendarapp.utils.epochSecondToLocalDate
-import com.example.calendarapp.utils.getDaysArray
-import com.example.calendarapp.utils.getHourArray
-import com.example.calendarapp.utils.getMinuteArray
-import com.example.calendarapp.utils.getMonthsArray
-import com.example.calendarapp.utils.getYearsArray
-import com.example.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModel
-import com.example.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModelFactory
 import com.google.android.material.switchmaterial.SwitchMaterial
+import com.luisbb.calendarapp.R
+import com.luisbb.calendarapp.utils.epochSecondToLocalDate
+import com.luisbb.calendarapp.utils.getDaysArray
+import com.luisbb.calendarapp.utils.getHourArray
+import com.luisbb.calendarapp.utils.getMinuteArray
+import com.luisbb.calendarapp.utils.getMonthsArray
+import com.luisbb.calendarapp.utils.getYearsArray
+import com.luisbb.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModel
+import com.luisbb.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModelFactory
 import java.time.ZonedDateTime
 
-class CreateEventActivity: AppCompatActivity() {
+open class CreateEventActivity: AppCompatActivity() {
 
     private lateinit var activityViewModel: CreateEventViewModel
     private lateinit var startDateTime: ZonedDateTime

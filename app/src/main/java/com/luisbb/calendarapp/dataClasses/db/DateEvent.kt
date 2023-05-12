@@ -1,4 +1,4 @@
-package com.example.calendarapp.dataClasses.db
+package com.luisbb.calendarapp.dataClasses.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

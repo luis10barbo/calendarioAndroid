@@ -1,10 +1,9 @@
-package com.example.calendarapp
+package com.luisbb.calendarapp
 
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -16,15 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.calendarapp.dataClasses.CalendarDay
-import com.example.calendarapp.dataClasses.db.DateEvent
-import com.example.calendarapp.recycleViews.EventsRecycleViewAdapter
-import com.example.calendarapp.utils.getMonthsArray
-import com.example.calendarapp.utils.getYearsArray
-import com.example.calendarapp.utils.localDateToEpochSecond
-import com.example.calendarapp.viewModels.activities.mainActivity.MainActivityViewModel
-import com.example.calendarapp.viewModels.activities.mainActivity.MainActivityViewModelFactory
 import com.luisbb.calendarapp.activities.DateActivity
+import com.luisbb.calendarapp.dataClasses.CalendarDay
+import com.luisbb.calendarapp.dataClasses.db.DateEvent
+import com.luisbb.calendarapp.recycleViews.CalendarRecycleViewAdapter
+import com.luisbb.calendarapp.recycleViews.EventsRecycleViewAdapter
+import com.luisbb.calendarapp.utils.getMonthsArray
+import com.luisbb.calendarapp.utils.getYearsArray
+import com.luisbb.calendarapp.utils.localDateToEpochSecond
+import com.luisbb.calendarapp.viewModels.activities.mainActivity.MainActivityViewModel
+import com.luisbb.calendarapp.viewModels.activities.mainActivity.MainActivityViewModelFactory
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivity : AppCompatActivity() {
