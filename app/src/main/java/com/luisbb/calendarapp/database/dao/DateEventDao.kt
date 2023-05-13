@@ -30,5 +30,5 @@ interface DateEventDao {
     fun getDateEvents(year: Int, month: Int, day: Int): LiveData<List<DateEvent>>
 
     @Query("SELECT * FROM date_event_table WHERE event_id = :eventId")
-    fun getDateEvent(eventId: Int): DateEvent
+    fun getDateEvent(eventId: Int): LiveData<DateEvent>
 }

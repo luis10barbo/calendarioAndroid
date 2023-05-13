@@ -20,14 +20,21 @@ class DateEventViewModel(private val dateEventDao: DateEventDao): ViewModel() {
         dateEventDao.deleteDateEvent(dateEvent)
     }
 
+    fun updateDateEvent(dateEvent:DateEvent) = viewModelScope.launch {
+        dateEventDao.updateDateEvent(dateEvent)
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthEvents(date: ZonedDateTime): LiveData<List<DateEvent>> {
-        Log.d("teste", date.monthValue.toString())
         return dateEventDao.getMonthEvents(date.year, date.monthValue)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getDayEvents(date: ZonedDateTime): LiveData<List<DateEvent>> {
         return dateEventDao.getDateEvents(date.year, date.monthValue, date.dayOfMonth)
+    }
+
+    fun getEvent(eventId: Int): LiveData<DateEvent> {
+        return dateEventDao.getDateEvent(eventId)
     }
 }
