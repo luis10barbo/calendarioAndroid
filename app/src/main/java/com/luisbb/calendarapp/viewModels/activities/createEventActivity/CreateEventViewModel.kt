@@ -59,7 +59,7 @@ class CreateEventViewModel(private val application: Application, private val act
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun saveEvent() =  viewModelScope.launch {
+    fun submitDateEvent() =  viewModelScope.launch {
         if (eventId == null)  {
             insertEvent()
             return@launch

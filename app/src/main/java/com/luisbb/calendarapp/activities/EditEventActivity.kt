@@ -2,7 +2,6 @@ package com.luisbb.calendarapp.activities
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -16,7 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.luisbb.calendarapp.R
 import com.luisbb.calendarapp.dataClasses.db.DateEvent
-import com.luisbb.calendarapp.utils.epochSecondToLocalDate
 import com.luisbb.calendarapp.utils.getDaysArray
 import com.luisbb.calendarapp.utils.getHourArray
 import com.luisbb.calendarapp.utils.getMinuteArray
@@ -67,14 +65,13 @@ class EditEventActivity: AppCompatActivity() {
         result.observe(this) {dateEvent ->
             if (dateEvent == null) return@observe
 
-            var hour = if (dateEvent.hour == null) 0 else dateEvent.hour!!
+            val hour = if (dateEvent.hour == null) 0 else dateEvent.hour!!
             val minute = if (dateEvent.minute == null) 0 else dateEvent.minute!!
 
             startDateTime = ZonedDateTime.of(dateEvent.year, dateEvent.month, dateEvent.day, hour, minute, 0, 0, ZoneId.systemDefault())
             dateTime = startDateTime
 
-            if (hour != 0 || minute != 0) useTime = true
-
+            if (dateEvent.hour != null || dateEvent.minute != null) useTime = true
 
             setupUi(dateEvent)
         }
@@ -148,6 +145,12 @@ class EditEventActivity: AppCompatActivity() {
     private fun setupSwitches() {
         val useTimeSwitch = findViewById<SwitchMaterial>(R.id.swUseTime)
         val timeLayout = findViewById<LinearLayout>(R.id.lyTime)
+
+        if (useTime) {
+            useTimeSwitch.isChecked = true
+            timeLayout.visibility = View.VISIBLE
+        }
+
         useTimeSwitch.setOnCheckedChangeListener { _, isChecked ->
             useTime = isChecked
 
@@ -169,7 +172,7 @@ class EditEventActivity: AppCompatActivity() {
             activityViewModel.minute = minuteSpinner.selectedItem.toString().toInt()
         }
 
-        activityViewModel.saveEvent()
+        activityViewModel.submitDateEvent()
         this.finish()
     }
 
