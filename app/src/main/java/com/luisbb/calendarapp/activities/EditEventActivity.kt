@@ -40,6 +40,7 @@ class EditEventActivity: AppCompatActivity() {
     private lateinit var hourSpinner: Spinner
     private lateinit var minuteSpinner: Spinner
 
+    private var dateEvent: DateEvent? = null
     private var useTime = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,22 +64,39 @@ class EditEventActivity: AppCompatActivity() {
 
         val result = activityViewModel.dateEventViewModel.getEvent(activityViewModel.eventId!!)
         result.observe(this) {dateEvent ->
-            if (dateEvent == null) return@observe
-
-            val hour = if (dateEvent.hour == null) 0 else dateEvent.hour!!
-            val minute = if (dateEvent.minute == null) 0 else dateEvent.minute!!
-
-            startDateTime = ZonedDateTime.of(dateEvent.year, dateEvent.month, dateEvent.day, hour, minute, 0, 0, ZoneId.systemDefault())
-            dateTime = startDateTime
-
-            if (dateEvent.hour != null || dateEvent.minute != null) useTime = true
-
-            setupUi(dateEvent)
+            onDateEventLoad(dateEvent)
         }
     }
-    private fun setupUi(dateEvent: DateEvent) {
+
+    private fun onDateEventLoad(dateEvent: DateEvent) {
+        if (dateEvent == null) return
+        this.dateEvent = dateEvent
+
+        if (dateEvent.hour != null || dateEvent.minute != null) useTime = true
+
+        val hour = if (dateEvent.hour == null) 0 else dateEvent.hour!!
+        val minute = if (dateEvent.minute == null) 0 else dateEvent.minute!!
+
+        startDateTime = ZonedDateTime.of(
+            dateEvent.year,
+            dateEvent.month,
+            dateEvent.day,
+            hour,
+            minute,
+            0,
+            0,
+            ZoneId.systemDefault()
+        )
+
+        dateTime = startDateTime
+
+
+        setupUi()
+    }
+
+    private fun setupUi() {
         setupTextView()
-        setupEditText(dateEvent)
+        setupEditText()
         setupSpinners()
         setupButtons()
         setupSwitches()
@@ -88,12 +106,12 @@ class EditEventActivity: AppCompatActivity() {
         val tvCreateEvent = findViewById<TextView>(R.id.tvCreateEvent)
         tvCreateEvent.text = resources.getString(R.string.edit_event)
     }
-    private fun setupEditText(dateEvent: DateEvent) {
+    private fun setupEditText() {
         nameEditText = findViewById(R.id.etEventName)
         descriptionEditText = findViewById(R.id.etEventDescription)
 
-        nameEditText.setText(dateEvent.name)
-        descriptionEditText.setText(dateEvent.description ?: "")
+        nameEditText.setText(dateEvent?.name ?: "")
+        descriptionEditText.setText(dateEvent?.description ?: "")
     }
 
     private fun setupViewModel() {
@@ -178,7 +196,7 @@ class EditEventActivity: AppCompatActivity() {
 
     private fun resetButtonClick() {
         dateTime = startDateTime
-        setupSpinners()
+        setupUi()
     }
 
 
