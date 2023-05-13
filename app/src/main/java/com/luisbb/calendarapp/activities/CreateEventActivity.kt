@@ -23,11 +23,12 @@ import com.luisbb.calendarapp.viewModels.activities.createEventActivity.CreateEv
 import com.luisbb.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModelFactory
 import java.time.ZonedDateTime
 
+@RequiresApi(Build.VERSION_CODES.O)
 open class CreateEventActivity: AppCompatActivity() {
 
-    private lateinit var activityViewModel: CreateEventViewModel
-    private lateinit var startDateTime: ZonedDateTime
-    private lateinit var dateTime: ZonedDateTime
+    lateinit var activityViewModel: CreateEventViewModel
+    lateinit var startDateTime: ZonedDateTime
+    lateinit var dateTime: ZonedDateTime
 
     private lateinit var nameEditText: EditText
     private lateinit var descriptionEditText: EditText
@@ -40,15 +41,19 @@ open class CreateEventActivity: AppCompatActivity() {
 
     private var useTime = false
 
-    @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
+        setupViewModel()
+
 
         getIntentExtras()
+        setupUi()
+    }
 
+    private fun setupUi() {
         setupEditText()
-        setupViewModel()
         setupSpinners()
         setupButtons()
         setupSwitches()
@@ -78,7 +83,7 @@ open class CreateEventActivity: AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun setupSpinners() {
+    private fun setupSpinners() {
         daySpinner = findViewById(R.id.spnDay)
         monthSpinner = findViewById(R.id.spnMonth)
         yearSpinner = findViewById(R.id.spnYear)
@@ -143,7 +148,7 @@ open class CreateEventActivity: AppCompatActivity() {
             activityViewModel.minute = minuteSpinner.selectedItem.toString().toInt()
         }
 
-        activityViewModel.saveEvent()
+        activityViewModel.submitDateEvent()
         this.finish()
     }
 
