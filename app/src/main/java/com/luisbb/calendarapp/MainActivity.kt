@@ -20,6 +20,7 @@ import com.luisbb.calendarapp.dataClasses.CalendarDay
 import com.luisbb.calendarapp.dataClasses.db.DateEvent
 import com.luisbb.calendarapp.recycleViews.CalendarRecycleViewAdapter
 import com.luisbb.calendarapp.recycleViews.EventsRecycleViewAdapter
+import com.luisbb.calendarapp.utils.NotificationHandler
 import com.luisbb.calendarapp.utils.getMonthsArray
 import com.luisbb.calendarapp.utils.getYearsArray
 import com.luisbb.calendarapp.utils.localDateToEpochSecond
@@ -31,12 +32,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var activityViewModel: MainActivityViewModel
 
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setupActivityViewModel()
         setupSpinners()
+
+        NotificationHandler(this)
     }
 
     override fun onStart() {
