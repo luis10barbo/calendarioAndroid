@@ -27,8 +27,8 @@ import java.time.ZonedDateTime
 open class CreateEventActivity: AppCompatActivity() {
 
     lateinit var activityViewModel: CreateEventViewModel
-    lateinit var startDateTime: ZonedDateTime
-    lateinit var dateTime: ZonedDateTime
+    private var startDateTime: ZonedDateTime = ZonedDateTime.now()
+    private var dateTime: ZonedDateTime = startDateTime
 
     private lateinit var nameEditText: EditText
     private lateinit var descriptionEditText: EditText
