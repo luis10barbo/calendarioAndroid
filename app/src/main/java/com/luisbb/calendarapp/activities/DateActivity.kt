@@ -88,7 +88,7 @@ class DateActivity: AppCompatActivity() {
 
         val eventRecyclerView = findViewById<RecyclerView>(R.id.rvDateEvents)
         eventRecyclerView.layoutManager = LinearLayoutManager(this)
-        eventRecyclerView.adapter = EventsRecycleViewAdapter(dateEvents) {dateEvent ->
+        eventRecyclerView.adapter = EventsRecycleViewAdapter(dateEvents, this@DateActivity) {dateEvent ->
             eventClearClick(dateEvent)
         }
     }

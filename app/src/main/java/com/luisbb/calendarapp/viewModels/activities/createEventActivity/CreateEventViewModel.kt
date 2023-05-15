@@ -19,6 +19,7 @@ class CreateEventViewModel(private val application: Application, private val act
 
     var eventName = ""
     var eventDescription = ""
+    var eventId: Int? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
     var day = date.dayOfMonth
@@ -44,9 +45,9 @@ class CreateEventViewModel(private val application: Application, private val act
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun saveEvent() =  viewModelScope.launch {
-        val dateEvent = DateEvent(
-            0,
+    fun createThisDateEvent(): DateEvent {
+        return DateEvent(
+            eventId ?: 0,
             year,
             month,
             day,
@@ -55,6 +56,26 @@ class CreateEventViewModel(private val application: Application, private val act
             eventName,
             eventDescription
         )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun submitDateEvent() =  viewModelScope.launch {
+        if (eventId == null)  {
+            insertEvent()
+            return@launch
+        }
+        replaceEvent()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun replaceEvent() = viewModelScope.launch {
+        val dateEvent = createThisDateEvent()
+        dateEventViewModel.updateDateEvent(dateEvent)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun insertEvent() = viewModelScope.launch {
+        val dateEvent = createThisDateEvent()
         dateEventViewModel.insertDateEvent(dateEvent)
     }
 }
