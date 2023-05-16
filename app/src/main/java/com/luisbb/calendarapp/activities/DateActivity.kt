@@ -14,6 +14,7 @@ import com.luisbb.calendarapp.R
 import com.luisbb.calendarapp.dataClasses.db.DateEvent
 import com.luisbb.calendarapp.recycleViews.EventsRecycleViewAdapter
 import com.luisbb.calendarapp.utils.epochSecondToLocalDate
+import com.luisbb.calendarapp.utils.getDaysOfWeekArray
 import com.luisbb.calendarapp.utils.getMonthsArray
 import com.luisbb.calendarapp.utils.localDateToEpochSecond
 import com.luisbb.calendarapp.viewModels.activities.dateActivity.DateActivityViewModel
@@ -61,8 +62,9 @@ class DateActivity: AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun setupTextViews() {
+        val currentDay = getDaysOfWeekArray()[date.dayOfWeek.value - 1]
         val dateText = findViewById<TextView>(R.id.tvDate)
-        dateText.text = "${date.dayOfMonth} de ${getMonthsArray()[date.monthValue - 1]} de ${date.year}"
+        dateText.text = "${currentDay}, ${date.dayOfMonth} de ${getMonthsArray()[date.monthValue - 1]} de ${date.year}"
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
