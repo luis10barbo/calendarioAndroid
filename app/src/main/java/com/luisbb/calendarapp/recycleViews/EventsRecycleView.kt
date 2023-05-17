@@ -10,7 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.luisbb.calendarapp.R
-import com.luisbb.calendarapp.activities.EditEventActivity
+import com.luisbb.calendarapp.activities.modifyEvent.EditEventActivity
 import com.luisbb.calendarapp.dataClasses.db.DateEvent
 
 class EventsRecycleViewAdapter(private val dateEvents: List<DateEvent>, private val application: AppCompatActivity, private val onClearClick: (dateEvent:DateEvent) -> Unit): RecyclerView.Adapter<EventsRecycleViewHolder>() {

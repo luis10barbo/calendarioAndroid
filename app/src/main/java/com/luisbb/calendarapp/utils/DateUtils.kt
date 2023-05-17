@@ -21,8 +21,8 @@ fun epochSecondToLocalDate(epochSeconds: Long): ZonedDateTime {
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun getDaysArray(date: LocalDate): Array<Int> {
-    return (1..date.lengthOfMonth()).toList().toTypedArray()
+fun getDaysArray(lengthOfMonth: Int): Array<Int> {
+    return (1..lengthOfMonth).toList().toTypedArray()
 }
 
 fun getYearsArray(): Array<Int> {

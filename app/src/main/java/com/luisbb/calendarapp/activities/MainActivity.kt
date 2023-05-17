@@ -31,17 +31,19 @@ import com.luisbb.calendarapp.viewModels.activities.mainActivity.MainActivityVie
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityViewModel: MainActivityViewModel
+    private lateinit var notificationHandler: NotificationHandler
 
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        notificationHandler = NotificationHandler(this)
+
         setContentView(R.layout.activity_main)
 
         setupActivityViewModel()
         setupSpinners()
 
-        NotificationHandler(this)
     }
 
     override fun onStart() {
@@ -121,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         val calendarRecycleView = findViewById<RecyclerView>(R.id.rvCalendar)
         calendarRecycleView.layoutManager = GridLayoutManager(this, 7)
         calendarRecycleView.adapter = activityViewModel.monthEvents.value?.let { dateEvents ->
+            notificationHandler.warnDateEvent(dateEvents[0])
             CalendarRecycleViewAdapter(activityViewModel.currentDate, { calendarDay ->
                 calendarDayClick(
                     calendarDay

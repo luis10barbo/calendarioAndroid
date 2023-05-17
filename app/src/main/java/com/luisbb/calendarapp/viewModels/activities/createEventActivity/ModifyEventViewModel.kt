@@ -14,22 +14,23 @@ import com.luisbb.calendarapp.viewModels.dateEvent.DateEventViewModelFactory
 import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
 
-class CreateEventViewModel(private val application: Application, private val activity: AppCompatActivity, val date: ZonedDateTime): ViewModel() {
+class ModifyEventViewModel(private val application: Application, private val activity: AppCompatActivity, val date: ZonedDateTime?): ViewModel() {
     lateinit var dateEventViewModel: DateEventViewModel
-
-    var eventName = ""
-    var eventDescription = ""
     var eventId: Int? = null
 
     @RequiresApi(Build.VERSION_CODES.O)
-    var day = date.dayOfMonth
+    var startDateEvent = DateEvent(
+        eventId ?: 0,
+        date?.year ?: 2000,
+        date?.monthValue ?: 1,
+        date?.dayOfMonth ?: 1,
+        date?.hour,
+        date?.minute,
+        "",
+        ""
+    )
     @RequiresApi(Build.VERSION_CODES.O)
-    var month = date.monthValue
-    @RequiresApi(Build.VERSION_CODES.O)
-    var year = date.year
-
-    var hour: Int? = null
-    var minute: Int? = null
+    var dateEvent = startDateEvent.copy()
 
     init {
         setupDateEventViewModel()
@@ -44,19 +45,6 @@ class CreateEventViewModel(private val application: Application, private val act
         )[DateEventViewModel::class.java]
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun createThisDateEvent(): DateEvent {
-        return DateEvent(
-            eventId ?: 0,
-            year,
-            month,
-            day,
-            hour,
-            minute,
-            eventName,
-            eventDescription
-        )
-    }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun submitDateEvent() =  viewModelScope.launch {
@@ -69,13 +57,11 @@ class CreateEventViewModel(private val application: Application, private val act
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun replaceEvent() = viewModelScope.launch {
-        val dateEvent = createThisDateEvent()
         dateEventViewModel.updateDateEvent(dateEvent)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun insertEvent() = viewModelScope.launch {
-        val dateEvent = createThisDateEvent()
         dateEventViewModel.insertDateEvent(dateEvent)
     }
 }
