@@ -8,10 +8,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import java.time.ZonedDateTime
 
-class CreateEventViewModelFactory(private val application: Application, private val activity: AppCompatActivity, private val date: ZonedDateTime): ViewModelProvider.Factory {
+class ModifyEventViewModelFactory(private val application: Application, private val activity: AppCompatActivity, private val date: ZonedDateTime): ViewModelProvider.Factory {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(CreateEventViewModel::class.java)) return CreateEventViewModel(application, activity, date) as T
+        if (modelClass.isAssignableFrom(ModifyEventViewModel::class.java)) return ModifyEventViewModel(application, activity, date) as T
 
         throw IllegalArgumentException("Unknown View Model Class")
     }

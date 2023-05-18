@@ -30,6 +30,11 @@ class DateEventViewModel(private val dateEventDao: DateEventDao): ViewModel() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
+    fun getMonthUpcomingEvents(date: ZonedDateTime): LiveData<List<DateEvent>> {
+        return dateEventDao.getMonthUpcomingEvents(date.year, date.monthValue, date.dayOfMonth)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getDayEvents(date: ZonedDateTime): LiveData<List<DateEvent>> {
         return dateEventDao.getDateEvents(date.year, date.monthValue, date.dayOfMonth)
     }

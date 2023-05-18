@@ -21,6 +21,7 @@ class MainActivityViewModel(private val application: Application, private val ac
     var currentDate: ZonedDateTime = ZonedDateTime.now()
     lateinit var dateEventViewModel: DateEventViewModel
     lateinit var monthEvents: LiveData<List<DateEvent>>
+    lateinit var upcomingEvents: LiveData<List<DateEvent>>
 
     init {
         setupDateEventViewModel()
@@ -29,9 +30,8 @@ class MainActivityViewModel(private val application: Application, private val ac
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun getMonthEvents() {
-        Log.d("teste", currentDate.toString())
         monthEvents = dateEventViewModel.getMonthEvents(currentDate)
-        Log.d("teste", monthEvents.value.toString())
+        upcomingEvents = dateEventViewModel.getMonthUpcomingEvents(currentDate)
     }
 
     private fun setupDateEventViewModel() {
