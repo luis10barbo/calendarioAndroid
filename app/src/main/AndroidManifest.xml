@@ -27,25 +27,17 @@
         <activity android:name="com.luisbb.calendarapp.activities.DateActivity"
             android:exported="true"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
 
-        <activity android:name=".activities.CreateEventActivity"
+        <activity android:name=".activities.modifyEvent.CreateEventActivity"
             android:exported="true"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
+
         </activity>
 
-        <activity android:name=".activities.EditEventActivity"
+        <activity android:name=".activities.modifyEvent.EditEventActivity"
             android:exported="true"
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
         </activity>
     </application>
 
