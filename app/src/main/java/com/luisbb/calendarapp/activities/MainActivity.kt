@@ -61,8 +61,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeMonthEvents() {
         activityViewModel.monthEvents.observe(this) { dateEvents ->
+            setupCalendarView(dateEvents)
+        }
+        activityViewModel.upcomingEvents.observe(this) { dateEvents ->
             if (dateEvents != null) {
-                setupCalendarView()
                 setupEventView(dateEvents)
             }
         }
@@ -94,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                 id: Long
             ) {
                 activityViewModel.currentDate = activityViewModel.currentDate.withMonth(position + 1)
-                setupCalendarView()
                 getMonthEvents()
             }
 
@@ -110,7 +111,6 @@ class MainActivity : AppCompatActivity() {
                 id: Long
             ) {
                 activityViewModel.currentDate = activityViewModel.currentDate.withYear(position + 2000)
-                setupCalendarView()
                 getMonthEvents()
             }
 
@@ -119,12 +119,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun setupCalendarView() {
+    fun setupCalendarView(dateEvents: List<DateEvent>) {
         val calendarRecycleView = findViewById<RecyclerView>(R.id.rvCalendar)
         calendarRecycleView.layoutManager = GridLayoutManager(this, 7)
-        calendarRecycleView.adapter = activityViewModel.monthEvents.value?.let { dateEvents ->
-            notificationHandler.warnDateEvent(dateEvents[0])
-            CalendarRecycleViewAdapter(activityViewModel.currentDate, { calendarDay ->
+        calendarRecycleView.adapter = CalendarRecycleViewAdapter(activityViewModel.currentDate, { calendarDay ->
                 calendarDayClick(
                     calendarDay
                 )
@@ -134,7 +132,6 @@ class MainActivity : AppCompatActivity() {
                 getColorStateList(R.color.black),
                 getColorStateList(R.color.currentDayWithEvent)
             )
-        }
     }
 
 

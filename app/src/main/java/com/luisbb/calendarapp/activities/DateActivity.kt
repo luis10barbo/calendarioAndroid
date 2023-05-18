@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.luisbb.calendarapp.R
+import com.luisbb.calendarapp.activities.modifyEvent.CreateEventActivity
 import com.luisbb.calendarapp.dataClasses.db.DateEvent
 import com.luisbb.calendarapp.recycleViews.EventsRecycleViewAdapter
 import com.luisbb.calendarapp.utils.epochSecondToLocalDate

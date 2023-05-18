@@ -22,12 +22,10 @@ import com.luisbb.calendarapp.utils.getHourArray
 import com.luisbb.calendarapp.utils.getMinuteArray
 import com.luisbb.calendarapp.utils.getMonthsArray
 import com.luisbb.calendarapp.utils.getYearsArray
-import com.luisbb.calendarapp.viewModels.activities.createEventActivity.CreateEventViewModelFactory
+import com.luisbb.calendarapp.viewModels.activities.createEventActivity.ModifyEventViewModelFactory
 import com.luisbb.calendarapp.viewModels.activities.createEventActivity.ModifyEventViewModel
-import java.time.LocalDateTime
 import java.time.YearMonth
 import java.time.ZonedDateTime
-import java.util.Date
 
 @RequiresApi(Build.VERSION_CODES.O)
 abstract class ModifyEventActivity: AppCompatActivity() {
@@ -80,7 +78,7 @@ abstract class ModifyEventActivity: AppCompatActivity() {
     }
 
     fun setupViewModel() {
-        val factory = CreateEventViewModelFactory(application, this, dateTime)
+        val factory = ModifyEventViewModelFactory(application, this, dateTime)
         activityViewModel = ViewModelProvider(
             this,
             factory
